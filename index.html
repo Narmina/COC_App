@@ -22,21 +22,17 @@ body { margin: 0; padding: 0; }
         zoom: 10
     });
 
-    map.on('load', function () {
-        map.addSource('route', {
-            'type': 'geojson',
-            'data':'https://github.com/Narmina/COC_App/blob/c7fa399934873c1f0033645ed9a2f1774e8da5e5/RITIS_data_testforapp.geojson'
-    
-        });
+    map.on('load', function() {
+        
         map.addLayer({
-            'id': 'route',
-            'type': 'line',
-            'source': 'route',
-            'layout': {
-                'line-join': 'round',
-                'line-cap': 'round'
+            
+            id: 'collisions',
+            type: 'circle',
+            source: {
+                type: 'geojson',
+                data: './RITIS_data_testforapp.geojson' // replace this with the url of your own geojson
             },
-            'paint': {
+            paint: {
                 'line-color': '#888',
                 'line-width': 8
             }
