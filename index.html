@@ -4,78 +4,15 @@
 <meta charset="utf-8">
 <title>Add a line to a map using a GeoJSON source</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js"></script>
 <style>
 body { margin: 0; padding: 0; }
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
- body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Helvetica Neue', Helvetica, Arial, Sans-serif;
-}
-
-h1 {
-  font-size: 20px;
-  line-height: 30px;
-}
-
-h2 {
-  font-size: 14px;
-  line-height: 20px;
-  margin-bottom: 10px;
-}
-
-a {
-  text-decoration: none;
-  color: #2dc4b2;
-}
-
- #console {
-        position: absolute;
-        margin: 10px;
-        width: 240px;
-        background-color: white;
-        padding: 10px 20px;
-      }
-
-      .session {
-        margin-bottom: 20px;
-      }
-
-      .row {
-        height: 12px;
-        width: 100%;
-      }
-
-      .colors {
-        background: linear-gradient(
-          to right,
-          #2dc4b2,
-          #3bb3c3,
-          #669ec4,
-          #8b88b6,
-          #a2719b,
-          #aa5e79
-        );
-        margin-bottom: 5px;
-      }
-
-      .label {
-        width: 15%;
-        display: inline-block;
-        text-align: center;
-      }
 </style>
 </head>
 <body>
-<div id='map'></div>
-<div id='console'>
-  <h1>Cost of Congestion</h1>
-  
-</div>
- 
-
+<div id="map"></div>
 <script>
  mapboxgl.accessToken = 'pk.eyJ1IjoibmFybWluYSIsImEiOiJja29uN2JxN3IwMXBjMndwN2Zyd3YzcXVtIn0.sj4YPT3J6J086z2YYLh3lw';
  var map = new mapboxgl.Map({
@@ -91,14 +28,13 @@ a {
  data: 'RITIS_data_testforapp.geojson'
         })
  map.addLayer({
- id: 'RITIS',
+ id: 'collisions',
  type: 'line',
  source: 'RITIS_data_testforapp.geojson',
  paint: {
-      'line-width': 3,
-      'line-color':'#2DC4B2',
-      'line-opacity': 0.8
-    }
+ 'line-color': '#888',
+ 'line-width': 8
+            }
         });
     });
 </script>
