@@ -137,6 +137,9 @@
     });
 
  map.on('load', function() {
+       var filterHour = ['==', ['number', ['get', 'Hour']], 12];
+       var filterDay = ['!=', ['string', ['get', 'Day']], 'placeholder'];
+
  map.addSource('RITIS_data_testforapp.geojson',{
  type: 'geojson',
  data: 'RITIS_data_testforapp.geojson'
@@ -156,9 +159,55 @@
   
 
   'line-opacity': 0.8
-            }
+            },
+        'filter': ['all', filterHour, filterDay]
         });
-    });
+    });// update hour filter when the slider is dragged
+        document
+          .getElementById('slider')
+          .addEventListener('input', function (e) {
+            var hour = parseInt(e.target.value);
+            // update the map
+            filterHour = ['==', ['number', ['get', 'Hour']], hour];
+            map.setFilter('collisions', ['all', filterHour, filterDay]);
+
+            // converting 0-23 hour to AMPM format
+            var ampm = hour >= 12 ? 'PM' : 'AM';
+            var hour12 = hour % 12 ? hour % 12 : 12;
+
+            // update text in the UI
+            document.getElementById('active-hour').innerText = hour12 + ampm;
+          });
+
+        document
+          .getElementById('filters')
+          .addEventListener('change', function (e) {
+            var day = e.target.value;
+            // update the map filter
+            if (day === 'all') {
+              filterDay = ['!=', ['string', ['get', 'Day']], 'placeholder'];
+            } else if (day === 'weekday') {
+              filterDay = [
+                'match',
+                ['get', 'Day'],
+                ['Sat', 'Sun'],
+                false,
+                true
+              ];
+            } else if (day === 'weekend') {
+              filterDay = [
+                'match',
+                ['get', 'Day'],
+                ['Sat', 'Sun'],
+                true,
+                false
+              ];
+            } else {
+              console.log('error');
+            }
+            map.setFilter('collisions', ['all', filterHour, filterDay]);
+          });
+      });
 </script>
 
 </body>
