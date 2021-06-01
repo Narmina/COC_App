@@ -9,9 +9,44 @@
 <style>
 body { margin: 0; padding: 0; }
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+ body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, Sans-serif;
+}
+
+h1 {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+h2 {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #2dc4b2;
+}
+
+#console {
+  position: absolute;
+  width: 240px;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: white;
+}
 </style>
 </head>
 <body>
+<div id='map'></div>
+<div id='console'>
+  <h1>Cost of Congestion</h1>
+  
+</div>
+ 
 <div id="map"></div>
 <script>
  mapboxgl.accessToken = 'pk.eyJ1IjoibmFybWluYSIsImEiOiJja29uN2JxN3IwMXBjMndwN2Zyd3YzcXVtIn0.sj4YPT3J6J086z2YYLh3lw';
