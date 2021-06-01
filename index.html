@@ -134,14 +134,14 @@
 
  map.on('load', function() {
        var filterHour = ['==', ['number', ['get', 'Hour']], 12];
-       var filterDay = ['!=', ['string', ['get', 'Day']], 'placeholder'];
+       var filterDay = ['!=', ['string', ['get', 'Days']], 'placeholder'];
 
  map.addSource('RITIS_data_testforapp.geojson',{
  type: 'geojson',
  data: 'RITIS_data_testforapp.geojson'
         })
  map.addLayer({
- id: 'collisions',
+ id: 'RITIS',
  type: 'line',
  source: 'RITIS_data_testforapp.geojson',
  paint: {
@@ -165,7 +165,7 @@
             var hour = parseInt(e.target.value);
             // update the map
             filterHour = ['==', ['number', ['get', 'Hour']], hour];
-            map.setFilter('collisions', ['all', filterHour, filterDay]);
+            map.setFilter('RITIS', ['all', filterHour, filterDay]);
 
             // converting 0-23 hour to AMPM format
             var ampm = hour >= 12 ? 'PM' : 'AM';
@@ -201,7 +201,7 @@
             } else {
               console.log('error');
             }
-            map.setFilter('collisions', ['all', filterHour, filterDay]);
+            map.setFilter('RITIS', ['all', filterHour, filterDay]);
           });
       });
 </script>
