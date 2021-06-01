@@ -33,19 +33,12 @@ body { margin: 0; padding: 0; }
  source: 'RITIS_data_testforapp.geojson',
  paint: {
   
-  'line-width': ['interpolate',['linear'],['number', ['get', 'Value']],
-                -1,
-                 0,
-                 1,
-                 2,
-                 3
-                  ],
+  'line-width': 1.2,
   'line-color': ['interpolate',['linear'],['number', ['get', 'Value']],
     -1,'#2DC4B2',
      0,'#3BB3C3',
      1,'#669EC4',
-     2,'#8B88B6',
-     3,'#A2719B'],
+     3,'#8B88B6'],
   
 
   'line-opacity': 0.8
