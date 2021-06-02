@@ -176,11 +176,11 @@
             var day = e.target.value;
             // update the map filter
             if (day === 'all') {
-              filterDay = ['!=', ['string', ['get', 'Day']], 'placeholder'];
+              filterDay = ['!=', ['string', ['get', 'Days']], 'placeholder'];
             } else if (day === 'weekday') {
               filterDay = [
                 'match',
-                ['get', 'Day'],
+                ['get', 'Days'],
                 ['Sat', 'Sun'],
                 false,
                 true
@@ -188,7 +188,7 @@
             } else if (day === 'weekend') {
               filterDay = [
                 'match',
-                ['get', 'Day'],
+                ['get', 'Days'],
                 ['Sat', 'Sun'],
                 true,
                 false
